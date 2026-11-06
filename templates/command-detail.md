@@ -22,7 +22,7 @@ Navigation: {{command category heading link}} · {{tool category heading links}}
 
 ## Core logic flow
 
-{{Use a short numbered list to name every important phase: admission, parameter handling, sampling/data preparation, algorithm branches, state update and response. Include preview/commit or async phases when present. Then show enough simplified code to explain each phase and its material branches. Show the actual return type and a plausible sample result for meaningful calls or branches, especially where the result feeds the next step. For long values, keep decisive fields or give the type name. Do not reduce the flow to function names or hide the algorithm behind invented helper calls. Explain source-supported behavior in bullets and short sentences.}}
+{{Use a short numbered list to name every important phase: admission, parameter handling, sampling/data preparation, algorithm branches, state update and response. Include preview/commit or async phases when present. Then show enough simplified code to explain each phase and its material branches. Show the actual return type and a plausible sample result only where a call or branch result is not obvious. For long values, keep decisive fields or give the type name. Do not reduce the flow to function names or hide the algorithm behind invented helper calls. Explain source-supported behavior in bullets and short sentences.}}
 
 ### {{Phase with meaningful logic}}
 
@@ -30,11 +30,11 @@ Original source: [{{symbol and path}}](https://github.com/storytold/photocraft/b
 
 **Adapted Rust** — {{identify what was shortened or renamed; use “Verbatim Rust” only for unchanged contiguous source. If helper names or control flow are invented for explanation, call the snippet pseudocode.}}
 
+Purpose: {{one short sentence describing what this code group does and why it matters to the next phase.}}
+
 ```rust
-// Input: {{actual inputs and preconditions}}.
-// Response: {{actual return type and a short sample value, e.g. Option<Region> = Some(Region { bbox, mask: /* omitted */ }); state change if applicable}}.
-// Explanation: {{how this phase produces the response}}.
-{{show essential branches, loops, conditions, value transformations, and representative returned values in Rust-like code; distinguish Result/Option wrappers from inner values}}
+{{show essential branches, loops, conditions, and value transformations in Rust-like code}}
+{{at a non-obvious result only: // Returns Option<Region>, e.g. Some(Region { /* fields omitted */ })}}
 ```
 
 - {{One short sentence describing a subtle branch or boundary.}}
