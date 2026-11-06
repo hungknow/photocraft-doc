@@ -1,7 +1,6 @@
 # {{Category heading}}
 
 Reviewed: {{date}} · Source: {{revision and dirty state}}
-Coverage: {{brief scope; remaining uncertainty summarized here}}
 Navigation: {{tools directory heading link}}
 
 | Tool/action | Surface and location | Commands |

@@ -4,7 +4,7 @@ Read this for every finding or command-documentation run. Paths are relative to 
 
 ## Scope and evidence
 
-Default source is sibling `../photocraft`; accept an explicit override. Verify its Cargo workspace and read its AGENTS.md and relevant docs. Treat source as read-only. Read the category directories, relevant tables, existing detail pages, before updating documents. Record revision, dirty state, date, scope, platforms/features, and unresolved areas in the affected category/index metadata or command page. A partial scan must never be presented as complete.
+Default source is sibling `../photocraft`; accept an explicit override. Verify its Cargo workspace and read its AGENTS.md and relevant docs. Treat source as read-only. Read the category directories, relevant tables, and existing detail pages before updating documents. Record revision and date in updated pages. Track scope internally while reconciling; do not show coverage or completion labels in indexes.
 
 Discover current paths with `rg --files`. Follow module exports, registration functions, macros, factories, tables and actual call sites. A string occurrence or menu declaration does not prove a command is registered or reachable. Test references are test evidence, not production callers. Do not execute editing commands against user documents to discover behavior.
 
@@ -12,14 +12,14 @@ Current starting points (verify each run): `crates/engine/src/cmd.rs` (`CommandS
 
 ## Index layout: tables only
 
-`docs/tools/index.md` and `docs/commands/index.md` are short category directories. Use the tool-index and command-index templates: brief scan/coverage metadata and a table with Category and Entries only. Category links include the target heading fragment.
+`docs/tools/index.md` and `docs/commands/index.md` are short category directories. Use the tool-index and command-index templates: source revision, review date, and a table with Category and Entries only. Category links include the target heading fragment.
 
-`docs/tools/<category-slug>.md` and `docs/commands/<category-slug>.md` contain a category heading, brief scan/coverage metadata, directory backlink, and one summary table. Use the tool-category and command-category templates:
+`docs/tools/<category-slug>.md` and `docs/commands/<category-slug>.md` contain a category heading, source revision and review date, directory backlink, and one summary table. Use the tool-category and command-category templates:
 
 - Tools: Tool/action, Surface and location, Commands.
 - Commands: Command, Purpose, Invoking UI actions.
 
-Do not add Lifecycle or Implementation columns, per-item headings, detailed records, parameter tables, source excerpts, Historical bindings, Notes, or other detail sections to any index/category file. Keep purpose to one short sentence. Keep coverage and unresolved findings brief in the affected category/index metadata; full explanation belongs exclusively in a requested doctify-cmd page. In those pages, favor bullets and short sentences. Give each logic code group a purpose sentence before the fence. Show enough simplified code to explain important branches; label adaptations. Within the code, comment only on non-obvious returned values beside the relevant expression, giving the actual Rust type and a short sample when helpful. Do not prepend Input, Response, or Explanation headers. Give concrete sample values in comments beside Rust structures. Use pinned GitHub source links with verified line fragments for all committed code excerpts. Do not generate detail pages just to give an index row a link.
+Do not add Lifecycle or Implementation columns, per-item headings, detailed records, parameter tables, source excerpts, Historical bindings, Notes, Coverage, or completion labels to any index/category file. Keep purpose to one short sentence; full explanation belongs exclusively in a requested doctify-cmd page. In those pages, favor bullets and short sentences. Give each logic code group a purpose sentence before the fence. Show enough simplified code to explain important branches; label adaptations. Within the code, comment only on non-obvious returned values beside the relevant expression, giving the actual Rust type and a short sample when helpful. Do not prepend Input, Response, or Explanation headers. Give concrete sample values in comments beside Rust structures. Use pinned GitHub source links with verified line fragments for all committed code excerpts. Do not generate detail pages just to give an index row a link.
 
 Group tools by user task using categories such as File/document, Editing/history, Selection, and Layers/masks. Group commands by the exact segment before the first dot in their ID: `tools.defaultColors` belongs in `docs/commands/tools.md`, and its detail page belongs in `docs/commands/tools/`. For a command ID without a dot, use the whole ID. Do not group commands by menu, purpose, caller, or Rust module. Keep prefix spelling and case in the command ID; use a lowercase safe filename for its category, checking for collisions. When a command ID changes prefix, move its row and detail page and update all links. Tool category filenames remain based on their readable category names.
 
@@ -51,11 +51,11 @@ Mark a missing item **DELETED** beside its name only after a complete relevant s
 
 Replace removed current relationships on both sides only within verified scope; keep category coverage and revision metadata accurate. Do not retain Historical bindings or Notes sections. Mark an existing detail page STALE when its implementation/params/bindings demonstrably changed; a source revision change alone does not establish staleness. Findings skills do not rewrite detailed walkthroughs. Repeated scans of unchanged source must not duplicate rows or generate needless content changes. Move legacy root-level detail pages into the matching category folder when touched, and update all incoming and outgoing relative links without creating duplicates.
 
-Update only the requested indexes, category pages, and command detail pages. Keep revision, date, coverage, and a short unresolved-scope statement in affected page metadata. If a full scan cannot finish, mark affected pages PARTIAL and give a brief continuation point there. Do not create `docs/scans/`, `log/`, or any separate run report.
+Update only the requested indexes, category pages, and command detail pages. Keep revision and date in affected page metadata. Do not add coverage status or PARTIAL/COMPLETE labels to indexes, including after a limited scan. Leave entries outside verified scope unchanged. Do not create `docs/scans/`, `log/`, or any separate run report.
 
 ## Migrating existing detailed indexes
 
-Extract the existing summary rows and stable tool keys before removing detailed sections. Keep every tool/command row, category assignment, DELETED marker and existing detail link. Remove lifecycle/implementation columns, full records, old custom anchors, Historical bindings and Notes. Do not turn removed record prose into unsolicited detail pages. Rewrite all repository links to category headings or existing detail headings. Preserve the recorded coverage: layout cleanup is not a source scan. For legacy monolithic indexes, split groups into category tables first and replace the root indexes with category directories. Repeating a completed migration must make no changes.
+Extract the existing summary rows and stable tool keys before removing detailed sections. Keep every tool/command row, category assignment, DELETED marker and existing detail link. Remove lifecycle/implementation columns, full records, old custom anchors, Historical bindings and Notes. Do not turn removed record prose into unsolicited detail pages. Rewrite all repository links to category headings or existing detail headings. Layout cleanup is not a source scan. For legacy monolithic indexes, split groups into category tables first and replace the root indexes with category directories. Repeating a completed migration must make no changes.
 
 ## Validation
 

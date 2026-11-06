@@ -10,7 +10,7 @@ $cmd-finding Scan ../photocraft and create or refresh the command index and call
 $doctify-cmd edit.undo
 ```
 
-You can specify another source checkout or limit a scan to a feature area. Limited scans are marked partial in the affected index metadata and never mark unseen items deleted. Run either finding skill again to reconcile additions, changes, removals, and restored items. Each finding skill maintains both sides of discovered tool/command relationships; neither requires you to run the other first.
+You can specify another source checkout or limit a scan to a feature area. Limited scans leave unseen entries unchanged. Run either finding skill again to reconcile additions, changes, removals, and restored items. Each finding skill maintains both sides of discovered tool/command relationships; neither requires you to run the other first.
 
 ## Outputs
 
