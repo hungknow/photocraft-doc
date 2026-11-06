@@ -9,6 +9,8 @@ Input: optional source checkout and feature scope. Output: category directories 
 
 Read [the shared contract](../../../workflows/source-documentation.md). Use [the command index template](../../../templates/command-index.md), [tool index template](../../../templates/tool-index.md), [tool category template](../../../templates/tool-category.md), [command category template](../../../templates/command-category.md), and [scan report template](../../../templates/scan-report.md).
 
+Use `docs/scans/` reports as the record of skill runs. Do not create or update a `log/` folder or development log.
+
 Keep directories and category files compact: category navigation at the root and summary tables in category files. No Lifecycle/Implementation columns, detailed records, Historical bindings, or Notes. Link to real Markdown headings using the shared contract; never use custom HTML record anchors. Keep detailed explanations exclusively in requested doctify-cmd pages. Update both sides of relationships and category entry counts. Migrate old detailed indexes using the shared contract.
 
 1. Discover the actual registry through public exports. Follow literals, macros, spec factories, loops, aliases, shell handlers and platform/feature branches. Distinguish registered, shell-only, catalog-only and unresolved cases in investigation/reporting; do not add an implementation column.

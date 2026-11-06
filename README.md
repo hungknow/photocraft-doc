@@ -16,13 +16,15 @@ You can specify another source checkout or limit a scan to a feature area. Limit
 
 | File | Contents |
 |---|---|
-| `docs/tools/index.md` | Grouped UI tools/actions, locations, command links, and detail-document links |
-| `docs/commands/index.md` | Grouped command IDs, purpose, implementations, invoking tools, and detail links |
+| `docs/tools/index.md` | Short category directory with entry counts and coverage |
+| `docs/tools/<category-name>.md` | Summary table of tools, locations, and command links |
+| `docs/commands/index.md` | Short category directory with entry counts and coverage |
+| `docs/commands/<category-name>.md` | Summary table of commands, purpose, and callers |
 | `docs/commands/cmd-<encoded-command-id>.md` | Purpose, use context, parameters, core flow, data structures, and actual Rust excerpts |
 | `docs/scans/<scan-id>.md` | Source revision, coverage, exclusions, counts, changes, and unresolved findings |
 
-These outputs are created when the skills run; this initial setup does not claim to have inventoried the application. Templates live in [templates](templates/), and update semantics live in the [shared workflow](workflows/source-documentation.md).
+Each category has its own file, such as `layers-masks.md` or `editing-history.md`. The main indexes list categories only. Category files contain summary tables without lifecycle/implementation columns, detailed records, Historical bindings, or Notes. Detailed explanations are created only when you invoke `$doctify-cmd <id>` (also understood as doctify-cmds in a request). Finding skills maintain this layout on every scan, and doctify-cmd updates the matching category records. Existing inventories retain their recorded scan coverage; reorganizing files does not complete a source scan. Templates live in [templates](templates/), and update semantics live in the [shared workflow](workflows/source-documentation.md).
 
 ## Extend
 
-Add `.agents/skills/<new-skill>/SKILL.md`, link to the shared workflow, define its inputs and output ownership, and register it in [AGENTS.md](AGENTS.md). Add a template if it produces a new kind of document. Existing command IDs and tool anchors must remain stable so new skills can link to them.
+Add `.agents/skills/<new-skill>/SKILL.md`, link to the shared workflow, define its inputs and output ownership, and register it in [AGENTS.md](AGENTS.md). Add a template if it produces a new kind of document. Keep exact command IDs and stable tool keys so new skills can reconcile existing rows. Links target category headings or existing command-detail headings.

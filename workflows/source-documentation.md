@@ -51,7 +51,7 @@ Mark a missing item **DELETED** beside its name only after a complete relevant s
 
 Replace removed current relationships on both sides only within verified scope; explain significant removals in the scan report. Do not retain Historical bindings or Notes sections. Mark an existing detail page STALE when its implementation/params/bindings demonstrably changed; a source revision change alone does not establish staleness. Findings skills do not rewrite detailed walkthroughs. Repeated scans of unchanged source must not duplicate rows or generate needless content changes.
 
-Write `docs/scans/YYYY-MM-DD-NN.md` with the next available suffix using the scan template. Report added/changed/deleted/restored counts, source evidence, unresolved routes and remaining scope. Save verified partial progress and a continuation point if a full scan cannot finish.
+Write `docs/scans/YYYY-MM-DD-NN.md` with the next available suffix using the scan template. Report added/changed/deleted/restored counts, source evidence, unresolved routes and remaining scope there. Save verified partial progress and a continuation point if a full scan cannot finish. Do not create or update a `log/` folder or development log; the scan report is the record of each skill run.
 
 ## Migrating existing detailed indexes
 

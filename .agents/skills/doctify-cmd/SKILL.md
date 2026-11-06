@@ -9,6 +9,8 @@ Input: exact case-sensitive command ID and optional source checkout. If no ID wa
 
 Read [the shared contract](../../../workflows/source-documentation.md), [command detail template](../../../templates/command-detail.md), [command index template](../../../templates/command-index.md), [tool index template](../../../templates/tool-index.md), [tool category template](../../../templates/tool-category.md), [command category template](../../../templates/command-category.md), and [scan report template](../../../templates/scan-report.md).
 
+Use `docs/scans/` reports as the record of skill runs. Do not create or update a `log/` folder or development log.
+
 Keep directories and category files compact: category navigation at the root and summary tables in category files. No Lifecycle/Implementation columns, detailed records, Historical bindings, or Notes. Link to real Markdown headings using the shared contract; never use custom HTML record anchors. Keep detailed explanations exclusively in requested doctify-cmd pages. Update both sides of relationships and category entry counts. Migrate old detailed indexes using the shared contract.
 
 1. Accept an exact case-sensitive command ID (also handle the user's spelling doctify-cmds). Search both category tables and current source; resolve registration, aliases and shell routes. If absent, report it without substituting another ID. For catalog-only IDs, document missing implementation without fabricating logic.
