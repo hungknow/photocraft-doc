@@ -1,13 +1,9 @@
 # {{exact command ID}}
 
-{{short user-facing label}}
+- {{One short sentence describing the result.}}
 
 Verified against: {{source revision and date}}
 Navigation: {{command category heading link}} · {{tool category heading links}}
-
-## Purpose
-
-- {{One short sentence describing the result.}}
 
 ## Context to use
 
@@ -63,4 +59,4 @@ Purpose: {{one short sentence describing what this code group does and why it ma
 {{show essential branches, loops, conditions, and value transformations in Rust-like code; comment behavior beside relevant lines and give actual types plus samples for non-obvious results}}
 ```
 
-{{Repeat for each important phase. Omit incidental setup, logging and boilerplate. Avoid pasting whole handlers when a focused adaptation explains the same behavior. Keep GitHub line links pinned and verify their ranges.}}
+{{Repeat for each important phase. Use short bullet lists for phase context or steps where possible. Keep explanations of Rust behavior in comments beside the code they describe. Omit incidental setup, logging and boilerplate. Avoid pasting whole handlers when a focused adaptation explains the same behavior. Keep GitHub line links pinned and verify their ranges.}}
