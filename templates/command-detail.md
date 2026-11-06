@@ -22,7 +22,7 @@ Navigation: {{command category heading link}} · {{tool category heading links}}
 
 ## Core logic flow
 
-{{Use a short numbered list to name every important phase: admission, parameter handling, sampling/data preparation, algorithm branches, state update and response. Include preview/commit or async phases when present. Then show enough simplified code to explain each phase and its material branches. Do not reduce the flow to function names or hide the algorithm behind invented helper calls. Explain source-supported behavior in bullets and short sentences.}}
+{{Use a short numbered list to name every important phase: admission, parameter handling, sampling/data preparation, algorithm branches, state update and response. Include preview/commit or async phases when present. Then show enough simplified code to explain each phase and its material branches. Show the actual return type and a plausible sample result for meaningful calls or branches, especially where the result feeds the next step. For long values, keep decisive fields or give the type name. Do not reduce the flow to function names or hide the algorithm behind invented helper calls. Explain source-supported behavior in bullets and short sentences.}}
 
 ### {{Phase with meaningful logic}}
 
@@ -32,9 +32,9 @@ Original source: [{{symbol and path}}](https://github.com/storytold/photocraft/b
 
 ```rust
 // Input: {{actual inputs and preconditions}}.
-// Response: {{returned value or state change}}.
+// Response: {{actual return type and a short sample value, e.g. Option<Region> = Some(Region { bbox, mask: /* omitted */ }); state change if applicable}}.
 // Explanation: {{how this phase produces the response}}.
-{{show the essential branches, loops, conditions and value transformations in Rust-like code; keep enough lines to make the algorithm understandable}}
+{{show essential branches, loops, conditions, value transformations, and representative returned values in Rust-like code; distinguish Result/Option wrappers from inner values}}
 ```
 
 - {{One short sentence describing a subtle branch or boundary.}}
@@ -43,5 +43,15 @@ Original source: [{{symbol and path}}](https://github.com/storytold/photocraft/b
 
 ## Structures used
 
-- `{{type}}`: {{fields and role in one short sentence}}. [{{original definition}}](https://github.com/storytold/photocraft/blob/{{verified full commit SHA}}/{{repo-relative Rust path}}#L{{start}}-L{{end}}).
-- {{List only structures needed to follow the flow.}}
+{{Show the Rust definitions or focused adapted fragments for the structures that carry this command's state. Include fields and variants needed by the flow. Keep the source link for each structure and label any adapted code. In Rust comments, give concrete sample values and explain what each value means for this command. Do not replace the code with a list of type names.}}
+
+Original source: [{{type and path}}](https://github.com/storytold/photocraft/blob/{{verified full commit SHA}}/{{repo-relative Rust path}}#L{{start}}-L{{end}}).
+
+**Adapted Rust** — {{state any omitted fields or variants; use “Verbatim Rust” only for unchanged code.}}
+
+```rust
+// Sample: {{a concrete, plausible value for this command, with field meanings}}.
+{{struct, enum, or focused Rust fragment showing its important fields and types}}
+```
+
+- {{One short sentence connecting the structure to the flow. Repeat for other essential structures.}}
