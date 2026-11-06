@@ -24,7 +24,7 @@
 
 ## Validation
 
-{{Checks actually performed: unique identities, reciprocal bindings, links/anchors, excerpt accuracy when applicable, preserved notes/tombstones, counts, repeated-scan stability. State any failures.}}
+{{Checks actually performed: unique row identities, reciprocal relationships, real heading links, excerpt accuracy when applicable, retained deleted rows, category counts, repeated-scan stability. State any failures.}}
 
 ## Remaining work
 

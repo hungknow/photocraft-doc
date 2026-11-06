@@ -1,82 +1,47 @@
-# `{{exact command ID}}` — {{label}}
+# {{exact command ID}}
 
-Lifecycle: {{ACTIVE or DELETED}} · Documentation: {{CURRENT, STALE, or INCOMPLETE}}
-Verified against: {{revision, dirty state, date, source root}}
-Scope/report: {{scan report link}}
-Navigation: {{command index anchor link}} · {{tool index link}}
+{{short user-facing label}}
+
+Verified against: {{source revision and scan link}}
+Navigation: {{command category heading link}} · {{tool category heading links}}
 
 ## Purpose
 
-{{Explain the concrete outcome and why a user would invoke it. State scope and limitations supported by the implementation.}}
+- {{One short sentence describing the result.}}
 
 ## Context to use
 
-{{Typical task, required document/selection/layer or mask state, supported modes/depths, and availability. Distinguish enabled checks from runtime validation.}}
+- {{When to run it and required document/tool state.}}
+- {{Important UI/headless distinction, if any.}}
 
-| Entry point | Trigger | Parameters/conditions | Implementation route |
-|---|---|---|---|
-| {{specific tool anchor or non-UI entrypoint}} | {{action/phase}} | {{values/derivation}} | {{shell/dialog/engine/helper links}} |
+## Inputs and response
 
-## Inputs and results
-
-| Parameter | Type | Required/default | Validation | Meaning |
-|---|---|---|---|---|
-| {{name}} | {{actual accepted type}} | {{requirement}} | {{bounds/errors}} | {{purpose}} |
-
-{{Result shape, state changes, and a valid invocation example with prerequisites and its actual dispatch surface. For zero parameters say so. Distinguish example data from source excerpts.}}
+- Input: {{required fields and meaningful defaults; show a small example if useful.}}
+- Response: {{actual return value and document/UI change.}}
+- Failure: {{important validation or admission error, if relevant.}}
 
 ## Core logic flow
 
-{{Numbered explanation from invocation through admission, dispatch, core algorithm, mutation, result and UI update. Include meaningful branches, failure paths, and async completion. A short Mermaid diagram is optional.}}
+{{Use a short numbered list to name every important phase: admission, parameter handling, sampling/data preparation, algorithm branches, state update and response. Include preview/commit or async phases when present. Then show enough simplified code to explain each phase and its material branches. Do not reduce the flow to function names or hide the algorithm behind invented helper calls. Explain source-supported behavior in bullets and short sentences.}}
 
-### {{Step and responsibility}}
+### {{Phase with meaningful logic}}
 
-Source: {{relative source link, Rust symbol, line span, verified revision}}
+Original source: [{{symbol and path}}](https://github.com/storytold/photocraft/blob/{{verified full commit SHA}}/{{repo-relative Rust path}}#L{{start}}-L{{end}}).
+
+**Adapted Rust** — {{identify what was shortened or renamed; use “Verbatim Rust” only for unchanged contiguous source. If helper names or control flow are invented for explanation, call the snippet pseudocode.}}
 
 ```rust
-{{verbatim contiguous Rust excerpt}}
+// Input: {{actual inputs and preconditions}}.
+// Response: {{returned value or state change}}.
+// Explanation: {{how this phase produces the response}}.
+{{show the essential branches, loops, conditions and value transformations in Rust-like code; keep enough lines to make the algorithm understandable}}
 ```
 
-{{Explain the excerpt's inputs, branches, outputs and connection to the next step. Repeat this block for the core handler and important lower-layer implementation, not just its call site. Identify omissions outside code blocks.}}
+- {{One short sentence describing a subtle branch or boundary.}}
+
+{{Repeat for each important phase. Omit incidental setup, logging and boilerplate. Avoid pasting whole handlers when a focused adaptation explains the same behavior. Keep GitHub line links pinned and verify their ranges.}}
 
 ## Structures used
 
-| Type | Role | Important fields/variants | Ownership and mutation | Defined in |
-|---|---|---|---|---|
-| {{Rust type}} | {{why needed here}} | {{fields and semantics}} | {{borrow/clone/shared data and mutations}} | {{source link}} |
-
-Source: {{relative source link, type symbol, line span, verified revision}}
-
-```rust
-{{verbatim relevant struct, enum, or type alias excerpt}}
-```
-
-{{Explain how these values move through the flow. Repeat for core types; split noncontiguous field excerpts and explain omissions outside code.}}
-
-## Effects, history, and failure behavior
-
-{{Document mutation boundaries, undo/redo/coalescing, journal behavior, preview/cancel rollback, I/O, asynchronous jobs, and error propagation as applicable. Do not infer atomicity or undo from naming alone.}}
-
-## Tests and evidence
-
-| Test/source | Behavior established | Verification |
-|---|---|---|
-| {{test link and symbol}} | {{case and limits}} | {{inspected only, or actual command/result}} |
-
-## Related commands and tools
-
-{{Specific reciprocal tool links, related command index links, and existing detail pages. Explain relationships briefly.}}
-
-## Limitations and open questions
-
-{{Unresolved tracing, conditional branches not verified, stale evidence or missing tests. Say None identified only when justified.}}
-
-## Notes
-
-{{Preserve human-authored notes here.}}
-
-## Revision history
-
-| Date/scan | Source revision | Change |
-|---|---|---|
-| {{date and scan link}} | {{revision/dirty}} | {{creation, refresh, stale, deletion, or restoration}} |
+- `{{type}}`: {{fields and role in one short sentence}}. [{{original definition}}](https://github.com/storytold/photocraft/blob/{{verified full commit SHA}}/{{repo-relative Rust path}}#L{{start}}-L{{end}}).
+- {{List only structures needed to follow the flow.}}
