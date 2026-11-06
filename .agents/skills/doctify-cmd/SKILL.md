@@ -5,11 +5,11 @@ description: Document one supplied PhotoCraft command ID by tracing its Rust reg
 
 # Explain one command from Rust source
 
-Input: exact case-sensitive command ID and optional source checkout. If no ID was supplied, ask for it. Output: `docs/commands/cmd-<encoded-id>.md` plus updates to the owning command/caller category files, both category directories, and a scoped scan report.
+Input: exact case-sensitive command ID and optional source checkout. If no ID was supplied, ask for it. Output: `docs/commands/cmd-<encoded-id>.md` plus updates to the owning command/caller category files, both category directories.
 
-Read [the shared contract](../../../workflows/source-documentation.md), [command detail template](../../../templates/command-detail.md), [command index template](../../../templates/command-index.md), [tool index template](../../../templates/tool-index.md), [tool category template](../../../templates/tool-category.md), [command category template](../../../templates/command-category.md), and [scan report template](../../../templates/scan-report.md).
+Read [the shared contract](../../../workflows/source-documentation.md), [command detail template](../../../templates/command-detail.md), [command index template](../../../templates/command-index.md), [tool index template](../../../templates/tool-index.md), [tool category template](../../../templates/tool-category.md), [command category template](../../../templates/command-category.md).
 
-Use `docs/scans/` reports as the record of skill runs. Do not create or update a `log/` folder or development log.
+Record source revision, date, coverage, and unresolved scope in affected pages. Do not create `docs/scans/`, `log/`, or separate run reports.
 
 Keep directories and category files compact: category navigation at the root and summary tables in category files. No Lifecycle/Implementation columns, detailed records, Historical bindings, or Notes. Link to real Markdown headings using the shared contract; never use custom HTML record anchors. Keep detailed explanations exclusively in requested doctify-cmd pages. Update both sides of relationships and category entry counts. Migrate old detailed indexes using the shared contract.
 
@@ -19,4 +19,4 @@ Keep directories and category files compact: category navigation at the root and
 4. Include a valid invocation example and prerequisites without executing a document mutation. Keep material effects and errors next to the phase that causes them. Do not add Tests and limits, Effects, Revision history, Historical bindings, or Notes sections.
 5. Save only the requested detail page at its stable filename, with the exact command ID as its plain Markdown title. Derive the link fragment from that heading (edit.undo → #editundo), not from the encoded filename. Preserve existing substantive detail content when refreshing; mark incomplete tracing explicitly.
 6. Update the command-name cell and all corresponding command links in tool tables to this detail heading. Update verified reciprocal caller summaries within scope. Create missing tables with partial coverage. Link back from the detail page to category headings and directories. Do not insert detailed records or per-item headings into indexes.
-7. Write a scoped scan report and validate links to real headings, row identities, reciprocal relationships, source-line link accuracy, adapted-code labeling, concise comments and template completion. Report the detail page, changed tables and remaining gaps. This is not a complete inventory scan.
+7. Validate links to real headings, row identities, reciprocal relationships, source-line link accuracy, adapted-code labeling, concise comments and template completion. Report the detail page, changed tables and remaining gaps to the user. This is not a complete inventory scan.

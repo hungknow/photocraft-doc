@@ -1,6 +1,6 @@
 # PhotoCraft commands
 
-Latest scan: {{scan report link}} · Source: {{revision and dirty state}}
+Reviewed: {{date}} · Source: {{revision and dirty state}}
 Coverage: {{complete or partial; brief scope}}
 
 ## Categories

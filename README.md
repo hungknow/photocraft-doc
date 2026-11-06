@@ -10,7 +10,7 @@ $cmd-finding Scan ../photocraft and create or refresh the command index and call
 $doctify-cmd edit.undo
 ```
 
-You can specify another source checkout or limit a scan to a feature area. Limited scans are recorded as partial and never mark unseen items deleted. Run either finding skill again to reconcile additions, changes, removals, and restored items. Each finding skill maintains both sides of discovered tool/command relationships; neither requires you to run the other first.
+You can specify another source checkout or limit a scan to a feature area. Limited scans are marked partial in the affected index metadata and never mark unseen items deleted. Run either finding skill again to reconcile additions, changes, removals, and restored items. Each finding skill maintains both sides of discovered tool/command relationships; neither requires you to run the other first.
 
 ## Outputs
 
@@ -21,7 +21,6 @@ You can specify another source checkout or limit a scan to a feature area. Limit
 | `docs/commands/index.md` | Short category directory with entry counts and coverage |
 | `docs/commands/<category-name>.md` | Summary table of commands, purpose, and callers |
 | `docs/commands/cmd-<encoded-command-id>.md` | Purpose, use context, parameters, core flow, data structures, and actual Rust excerpts |
-| `docs/scans/<scan-id>.md` | Source revision, coverage, exclusions, counts, changes, and unresolved findings |
 
 Each category has its own file, such as `layers-masks.md` or `editing-history.md`. The main indexes list categories only. Category files contain summary tables without lifecycle/implementation columns, detailed records, Historical bindings, or Notes. Detailed explanations are created only when you invoke `$doctify-cmd <id>` (also understood as doctify-cmds in a request). Finding skills maintain this layout on every scan, and doctify-cmd updates the matching category records. Existing inventories retain their recorded scan coverage; reorganizing files does not complete a source scan. Templates live in [templates](templates/), and update semantics live in the [shared workflow](workflows/source-documentation.md).
 

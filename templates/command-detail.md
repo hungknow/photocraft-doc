@@ -2,7 +2,7 @@
 
 {{short user-facing label}}
 
-Verified against: {{source revision and scan link}}
+Verified against: {{source revision and date}}
 Navigation: {{command category heading link}} · {{tool category heading links}}
 
 ## Purpose

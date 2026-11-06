@@ -1,7 +1,7 @@
 # {{Category heading}}
 
-Latest scan: {{scan report link}} · Source: {{revision and dirty state}}
-Coverage: {{brief scope; unresolved details in scan report}}
+Reviewed: {{date}} · Source: {{revision and dirty state}}
+Coverage: {{brief scope; remaining uncertainty summarized here}}
 Navigation: {{tools directory heading link}}
 
 | Tool/action | Surface and location | Commands |
