@@ -22,7 +22,7 @@ You can specify another source checkout or limit a scan to a feature area. Limit
 | `docs/commands/<category-name>.md` | Summary table of commands, purpose, and callers |
 | `docs/commands/<category-name>/cmd-<encoded-command-id>.md` | Command walkthrough in a folder matching its category file, with Rust structure examples |
 
-Each category has its own file, such as `layers-masks.md` or `editing-history.md`. The main indexes list categories only. Category files contain summary tables without lifecycle/implementation columns, detailed records, Historical bindings, or Notes. Detailed explanations are created only when you invoke `$doctify-cmd <id>` (also understood as doctify-cmds in a request). Finding skills maintain this layout on every scan, and doctify-cmd updates the matching category records. Existing inventories retain their recorded scan coverage; reorganizing files does not complete a source scan. Templates live in [templates](templates/), and update semantics live in the [shared workflow](workflows/source-documentation.md).
+Command categories use ID prefixes: `tools.defaultColors` is listed in `docs/commands/tools.md`, and its detailed page goes under `docs/commands/tools/`. Tool categories stay grouped by user task. The main indexes list categories only. Category files contain summary tables without lifecycle/implementation columns, detailed records, Historical bindings, or Notes. Detailed explanations are created only when you invoke `$doctify-cmd <id>`. Finding skills maintain this layout on every scan. Templates live in [templates](templates/), and update semantics live in the [shared workflow](workflows/source-documentation.md).
 
 ## Extend
 
