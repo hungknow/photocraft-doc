@@ -43,6 +43,10 @@ Original source: [{{type and path}}](https://github.com/storytold/photocraft/blo
 {{struct, enum, or focused Rust fragment with concrete sample values and non-obvious meanings commented beside the relevant fields}}
 ```
 
+## Algorithm
+
+{{Inspect the full downstream behavior to determine whether a mathematical, geometric, image-processing, rendering, or other numerical algorithm materially defines the command. If one is present, this section is required—even when the command only selects a tool or stores state and another handler or render pass later applies the algorithm. Trace the actual computation through that consuming/rendering path, include units, and give a worked example with realistic sample inputs, intermediate values, and output. Explain what changes on screen or in the document. Cite the pinned source and label adapted code. Omit this section only when source tracing confirms that no such algorithm is available or relevant.}}
+
 ## Core logic flow
 
 {{First give one representative action in actual execution order. Name each real caller and callee and its file: entry/selection → event → guards/interceptors → algorithm/state → render/preview → commit/result/history. Explain when the next call occurs in a later gesture or render pass. For each non-obvious method, say what it accepts, what its return type/value means, what state it changes, and how failure is represented. Use a short numbered route or a compact call map with source links. Say that the following branch subsections are alternatives, not one continuous execution sequence.}}
