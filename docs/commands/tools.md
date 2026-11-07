@@ -1,6 +1,6 @@
 # tools
 
-Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked docs).
+Reviewed: 2026-11-07 · Source: `e95cdee5bbef75b712b2d81a277d91412fd8d6ed` (tracked Rust source revision).
 
 Navigation: [All command categories](index.md#categories)
 
@@ -33,7 +33,7 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.frame | Frame Tool | [Frame Tool shortcut](../tools/transform-crop.md#transform-crop) |
 | tools.select.freeformPen | Freeform Pen Tool | [Freeform Pen Tool shortcut](../tools/vector-shapes.md#vector-shapes) |
 | tools.select.gradient | Gradient Tool | [Gradient Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
-| tools.select.hand | ✋ | [✋ shortcut](../tools/view-workspace.md#view-workspace) |
+| [tools.select.hand](tools/cmd-tools.select.hand.md#toolsselecthand) | Select the Hand tool for panning and view navigation. | [Hand shortcut](../tools/view-workspace.md#view-workspace); toolbar/flyout selection changes the same UI state directly |
 | tools.select.healing | Healing Brush Tool | [Healing Brush Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.historyBrush | History Brush Tool | [History Brush Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.horizontalTypeMask | Horizontal Type Mask Tool | [Horizontal Type Mask Tool shortcut](../tools/type.md#type) |

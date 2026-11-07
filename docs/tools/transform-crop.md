@@ -1,6 +1,6 @@
 # Transform crop
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (two untracked documentation files; no dirty Rust source).
+Reviewed: 2026-11-07 · Source: `e95cdee5bbef75b712b2d81a277d91412fd8d6ed` (tracked Rust source revision).
 
 Navigation: [All tools categories](index.md#categories)
 

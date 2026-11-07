@@ -1,13 +1,13 @@
 # View workspace
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (two untracked documentation files; no dirty Rust source).
+Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked documentation files).
 
 Navigation: [All tools categories](index.md#categories)
 
 
 | Tool/action | Surface and location | Commands |
 |---|---|---|
-| ✋ shortcut <!-- tool-key: keyboard:tools.select.hand --> | Keyboard tool assignment | [tools.select.hand](../commands/tools.md#tools) |
+| ✋ shortcut <!-- tool-key: keyboard:tools.select.hand --> | Default H; customized binding invokes the ID | [tools.select.hand](../commands/tools/cmd-tools.select.hand.md#toolsselecthand) |
 | 🧭 shortcut <!-- tool-key: keyboard:tools.select.rotateView --> | Keyboard tool assignment | [tools.select.rotateView](../commands/tools.md#tools) |
 | 🔍 shortcut <!-- tool-key: keyboard:tools.select.zoom --> | Keyboard tool assignment | [tools.select.zoom](../commands/tools.md#tools) |
 | 100% <!-- tool-key: menu:View/100% --> | View | [view.actualPixels](../commands/view.md#view) |
