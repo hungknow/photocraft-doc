@@ -43,9 +43,20 @@ Original source: [{{type and path}}](https://github.com/storytold/photocraft/blo
 {{struct, enum, or focused Rust fragment with concrete sample values and non-obvious meanings commented beside the relevant fields}}
 ```
 
-## Logic flow
+## Core logic flow
 
-{{Create a separate level-three subsection for each verified, materially distinct logic flow. Name the flow by its trigger and result, such as “Invoke the ID to select the tool,” “Drag selected pixels,” “Drag layers,” or “Nudge with arrow keys.” Do not combine independent flows under a generic phase heading. Within each flow, trace its dispatch point, admission and interception, target choice, parameter or modifier handling, lower-layer algorithm, preview, commit or cancel, result, and history as applicable. Use level-four headings inside a flow only when its phases need separation. Include no-document, selection versus layer or mask, lock, error, async completion, and ownership branches where they change the result. For a tool-selection ID, separately explain selecting the tool and using it; follow later gestures to the commands they actually dispatch. Do not imply a direct UI action dispatched the ID unless the source proves it. Omit flows that do not exist. Show enough simplified code to explain decisive branches, with return types and sample results where non-obvious. Put explanations beside the relevant Rust lines as comments; avoid prose that repeats the code.}}
+{{First give one representative action in actual execution order. Name each real caller and callee and its file: entry/selection → event → guards/interceptors → algorithm/state → render/preview → commit/result/history. Explain when the next call occurs in a later gesture or render pass. For each non-obvious method, say what it accepts, what its return type/value means, what state it changes, and how failure is represented. Use a short numbered route or a compact call map with source links. Say that the following branch subsections are alternatives, not one continuous execution sequence.}}
+
+### Read the execution route before the individual flows
+
+1. {{Actual entry and resulting state; cite source.}}
+2. {{Actual dispatch and interception order; cite source.}}
+3. {{Actual algorithm and preview/render boundary; cite source.}}
+4. {{Actual commit, response, and history; cite source.}}
+
+{{Briefly explain the meaning and return/failure semantics of non-obvious methods at their first use, either in this route or the relevant flow.}}
+
+{{Then create a separate level-three subsection for each verified, materially distinct logic flow. Name the flow by its trigger and result, such as “Invoke the ID to select the tool,” “Drag selected pixels,” “Drag layers,” or “Nudge with arrow keys.” Do not combine independent flows under a generic phase heading. Within each flow, trace its dispatch point, admission and interception, target choice, parameter or modifier handling, lower-layer algorithm, preview, commit or cancel, result, and history as applicable. Use level-four headings inside a flow only when its phases need separation. Include no-document, selection versus layer or mask, lock, error, async completion, and ownership branches where they change the result. For a tool-selection ID, separately explain selecting the tool and using it; follow later gestures to the commands they actually dispatch. Do not imply a direct UI action dispatched the ID unless the source proves it. Omit flows that do not exist. Show enough simplified code to explain decisive branches, with return types and sample results where non-obvious. Put explanations beside the relevant Rust lines as comments; avoid prose that repeats the code.}}
 
 ### {{Distinct logic flow: trigger and result}}
 
