@@ -42,6 +42,9 @@ struct ToolOptions {
     line_weight: f32,   // 5.0 px: thickness of the line geometry.
     arrow_start: bool,  // false: no arrow at the press endpoint.
     arrow_end: bool,    // true: add an arrow at the release endpoint.
+    arrow_width: f32,   // 20 px across the head in the worked example.
+    arrow_length: f32,  // 12 px along the line.
+    arrow_concavity: f32, // 50%: a rear notch halfway through the head.
 }
 ```
 
@@ -86,6 +89,17 @@ struct ShapeBoxDrag {
     scale: [f64; 2],      // [1.25, 1.25]: current preview scale.
 }
 ```
+
+## Algorithm
+
+The Line ID selects a tool. A later canvas drag supplies the geometry. The example below uses document pixels and assumes snapping leaves the endpoints unchanged. [Geometry](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/vector_ui/shapes.rs#L48-L65)
+
+- Press at (10, 150) and drag to (90, 152), holding Shift. The raw vector is (80, 2) px. Its length is √(80² + 2²) = 80.025 px and its angle is about 1.43°. Rounding to the nearest 45° gives 0°; the resulting endpoint is (90.025, 150) px. A drag shorter than one document pixel returns no geometry, so it has no preview or commit. [Constraint](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/vector_ui/shapes.rs#L51-L61)
+- Choose a 5 px weight, an end arrow 20 px wide and 12 px long, and 50% concavity. The geometry value contains the adjusted endpoints, weight and arrow options. The parser takes those parameters and returns Result<LiveShape, EngineError>, here an editable ArrowLine; invalid arrow flag types or dimensions return an error. [Parameters](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/vector_ui/shapes.rs#L62-L65) · [Parser](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/engine/src/cmd/vector_cmds/params.rs#L358-L405)
+- The vector algorithm returns a Path with a 5 px wide shaft from x = 10 to x = 84.025, between y = 147.5 and 152.5. The arrow tip is (90.025, 150); its rear corners are (78.025, 140) and (78.025, 160). The 50% rear notch lands at (84.025, 150). Thus the user sees a thin bar ending in a 20 px wide head. With both arrow flags false, the same function constructs a four-corner filled bar. Non-finite coordinates produce an empty Path. [Bar](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/vector/src/shapes.rs#L209-L216) · [Arrow](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/vector/src/shapes.rs#L224-L288)
+- In a separate paint pass, the preview path gets the current fill and optional stroke in Shape mode. The view transform maps it to screen coordinates. At 2× zoom with screen origin (0, 0), the tip appears near (180.05, 300) screen pixels, and the head spans about 40 screen pixels vertically. The preview renderer returns no value: it compiles the shape, rasterizes its visible bounds to RGBA, caches the texture and paints it. Empty bounds or invalid clip draw nothing. It limits oversized previews to a 2048 px proxy. Path mode shows only the accent outline. [Preview construction](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/vector_ui/shapes.rs#L195-L241) · [Preview raster](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/shape_stroke_ui.rs#L90-L131)
+- On release in Shape mode, the engine parses and validates the same geometry. It rasterizes the stored layer cache in the document pixel format and canvas bounds, then inserts the vector layer. The screen RGBA preview does not set the document color model or depth. In Path mode, the engine stores the generated vector subpath in the work path instead. [Commit](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/engine/src/cmd/vector_cmds/shape.rs#L425-L462) · [Document renderer](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/vector/src/lib.rs#L695-L699) · [Path mode](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/vector_ui/shapes.rs#L101-L124)
+- A shape-box handle uses a separate scale algorithm. For bounds [10, 20, 90, 60], a bottom-right handle drag by (20, 10) px has diagonal (80, 40) px. Its projected scale is 1 + (20×80 + 10×40)/(80² + 40²) = 1.25 on both axes. The opposite corner (10, 20) stays fixed, so the preview box becomes [10, 20, 110, 70]. Release passes 125% on both axes to edit.transform, which updates the selected paths. [Scale](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/shape_bounds_box.rs#L93-L126) · [Preview and commit](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/tools/shape_bounds_box.rs#L202-L251)
 
 ## Core logic flow
 
