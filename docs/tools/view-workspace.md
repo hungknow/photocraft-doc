@@ -1,6 +1,6 @@
 # View workspace
 
-Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked documentation files).
+Reviewed: 2026-11-07 · Source: `f68e227026701cf24e0e182530694240e2d3cfe4` (tracked Rust source revision).
 
 Navigation: [All tools categories](index.md#categories)
 
@@ -9,7 +9,7 @@ Navigation: [All tools categories](index.md#categories)
 |---|---|---|
 | ✋ shortcut <!-- tool-key: keyboard:tools.select.hand --> | Default H; customized binding invokes the ID | [tools.select.hand](../commands/tools/cmd-tools.select.hand.md#toolsselecthand) |
 | 🧭 shortcut <!-- tool-key: keyboard:tools.select.rotateView --> | Keyboard tool assignment | [tools.select.rotateView](../commands/tools.md#tools) |
-| 🔍 shortcut <!-- tool-key: keyboard:tools.select.zoom --> | Keyboard tool assignment | [tools.select.zoom](../commands/tools.md#tools) |
+| 🔍 shortcut <!-- tool-key: keyboard:tools.select.zoom --> | Keyboard tool assignment | [tools.select.zoom](../commands/tools/cmd-tools.select.zoom.md#toolsselectzoom) |
 | 100% <!-- tool-key: menu:View/100% --> | View | [view.actualPixels](../commands/view.md#view) |
 | 200% <!-- tool-key: menu:View/200% --> | View | [view.twoHundredPercent](../commands/view.md#view) |
 | 32-bit Preview Options… <!-- tool-key: menu:View/32-bit Preview Options… --> | View | [view.thirtyTwoBitPreviewOptions](../commands/view.md#view) |

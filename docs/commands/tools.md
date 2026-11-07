@@ -38,7 +38,7 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.historyBrush | History Brush Tool | [History Brush Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.horizontalTypeMask | Horizontal Type Mask Tool | [Horizontal Type Mask Tool shortcut](../tools/type.md#type) |
 | tools.select.lasso | Lasso Tool | [Lasso Tool shortcut](../tools/selection.md#selection) |
-| tools.select.line | Line Tool | [Line Tool shortcut](../tools/vector-shapes.md#vector-shapes) |
+| [tools.select.line](tools/cmd-tools.select.line.md#toolsselectline) | Select the Line tool for later shape or path drags. | [Line Tool shortcut and direct toolbar choice](../tools/vector-shapes.md#vector-shapes) |
 | tools.select.magicEraser | Magic Eraser Tool | [Magic Eraser Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.magicWand | W | [W shortcut](../tools/selection.md#selection) |
 | tools.select.magneticLasso | L | [L shortcut](../tools/selection.md#selection) |
@@ -74,7 +74,7 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.type | Horizontal Type Tool | [Horizontal Type Tool shortcut](../tools/type.md#type) |
 | tools.select.verticalType | Vertical Type Tool | [Vertical Type Tool shortcut](../tools/type.md#type) |
 | tools.select.verticalTypeMask | T | [T shortcut](../tools/type.md#type) |
-| tools.select.zoom | 🔍 | [🔍 shortcut](../tools/view-workspace.md#view-workspace) |
+| [tools.select.zoom](tools/cmd-tools.select.zoom.md#toolsselectzoom) | Selects the Zoom tool for changing the canvas view. | [Zoom shortcut](../tools/view-workspace.md#view-workspace); toolbar selection sets the same UI state directly |
 | tools.swapColors | Switch Foreground and Background Colors | [Switch Foreground and Background Colors](../tools/painting-retouching.md#painting-retouching) |
 | tools.setBrush | Set the session brush or choose a preset. | [Brush resize HUD](../tools/painting-retouching.md#painting-retouching); [preset picker](../tools/painting-retouching.md#painting-retouching); [mode choice](../tools/painting-retouching.md#painting-retouching); [numeric keys](../tools/painting-retouching.md#painting-retouching); [options controls](../tools/painting-retouching.md#painting-retouching) |
 | tools.setColors | Set foreground and background colors. | [Brush Alt sampling](../tools/painting-retouching.md#painting-retouching); [Brush color HUD](../tools/painting-retouching.md#painting-retouching) |
