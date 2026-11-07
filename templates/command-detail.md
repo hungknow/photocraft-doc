@@ -2,6 +2,8 @@
 
 - {{One short sentence describing the result.}}
 
+Use bullet lists for explanations, routes, branches, prerequisites, defaults, results, and errors wherever practical. Keep paragraphs to brief orientation or transitions; split long explanations into bullets. Keep each bullet focused on one point.
+
 Verified against: {{source revision and date}}
 Navigation: {{command category heading link}} · {{tool category heading links}}
 

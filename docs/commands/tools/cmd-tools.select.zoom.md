@@ -42,6 +42,35 @@ struct ZoomDrag {
 }
 ```
 
+## Algorithm
+
+### Zoom rendering math
+
+The gesture changes `View.zoom`; the later canvas render turns it into a document-to-screen scale. `canvas.rs` divides the stored device-pixel zoom by display pixels-per-point (`ppp`) when constructing `ViewXform`. `ViewXform::to_screen` subtracts the camera center, applies pixel aspect correction, rotates and optionally flips, then multiplies by this points-per-document-pixel scale and adds the canvas center. `doc_rect` maps all four document rectangle corners through `to_screen` and takes their screen bounds. The GPU path uses the same camera scale in its document-to-pixel transform; CPU overlays and canvas bounds use `ViewXform`.
+
+Original source: [ViewXform mapping](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/view_xform.rs#L101-L145), [canvas renderer setup](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas.rs#L1912-L1924), [canvas image bounds](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas.rs#L356-L360), [GPU mapping](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/gpu_canvas/shaders.rs#L53-L76).
+
+Purpose: This worked example shows the ordinary unrotated, unflipped square-pixel mapping used to render a document point.
+
+**Adapted Rust** — the math is simplified from `ViewXform::to_screen`; sample values are in egui screen points and document pixels.
+
+```rust
+let stored_zoom = 2.0_f32; // 2 physical display pixels per document pixel (200%)
+let ppp = 2.0_f32;         // 2 physical display pixels per egui point
+let scale = stored_zoom / ppp; // 1 egui point per document pixel
+let canvas_center = (500.0, 350.0); // screen points
+let camera_center = (1000.0, 750.0); // document pixels
+let doc_point = (1200.0, 800.0); // document pixel coordinates
+
+let screen_point = (
+    canvas_center.0 + (doc_point.0 - camera_center.0) * scale,
+    canvas_center.1 + (doc_point.1 - camera_center.1) * scale,
+); // (700, 400) screen points, or (1400, 800) physical pixels
+```
+
+So a 2000×1500 document at 200% occupies 4000×3000 physical pixels, or 2000×1500 egui points on a 2-pixels-per-point display. At 50% (`stored_zoom = 0.5`) it occupies 1000×750 physical pixels. With non-square pixel display correction, the x scale is additionally multiplied by `aspect`; rotation mixes x and y before scaling, and horizontal flip negates the final x offset. `to_doc` reverses these operations for pointer coordinates, so the point under the zoom anchor remains stable as the view changes.
+
+
 ## Core logic flow
 
 Representative route: `Z` is associated with the ID in `shell_commands.rs`; `input::shortcuts::select_tool_by_key` handles the key directly, resolves its tool group and changes `app.ui.tool` without dispatching the ID; a later canvas event calls the Zoom handling in `canvas.rs`; `zoom_tool::drag` updates view state during drag and release, and a separate canvas paint pass calls `zoom_tool::draw` for rectangle feedback. A click follows the canvas click branch instead. These following flow subsections are alternatives, not a top-to-bottom sequence.
@@ -89,6 +118,7 @@ if buttons.stopped {
     ctx.data_mut(|d| d.remove::<ZoomDrag>(id())); // release ends drag; no history entry
 }
 ```
+
 
 With scrubby Zoom disabled, the drag stores `rect_to` instead. The later paint pass calls `draw`, which renders marching-ants feedback. On release, `zoom_to_rect` fits the dragged rectangle; a rectangle under four screen points in either dimension steps one level at the press anchor. Holding Alt at release steps out. No history entry is created.
 
