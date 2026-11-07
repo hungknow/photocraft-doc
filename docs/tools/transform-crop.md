@@ -10,7 +10,7 @@ Navigation: [All tools categories](index.md#categories)
 | Artboard Tool shortcut <!-- tool-key: keyboard:tools.select.artboard --> | Keyboard tool assignment | [tools.select.artboard](../commands/tools.md#tools) |
 | C shortcut <!-- tool-key: keyboard:tools.select.crop --> | Keyboard tool assignment | [tools.select.crop](../commands/tools.md#tools) |
 | Frame Tool shortcut <!-- tool-key: keyboard:tools.select.frame --> | Keyboard tool assignment | [tools.select.frame](../commands/tools.md#tools) |
-| ✥ shortcut <!-- tool-key: keyboard:tools.select.move --> | Keyboard tool assignment | [tools.select.move](../commands/tools.md#tools) |
+| Move Tool shortcut <!-- tool-key: keyboard:tools.select.move --> | Keyboard tool assignment | [tools.select.move](../commands/tools/cmd-tools.select.move.md#toolsselectmove) |
 | Perspective Crop Tool shortcut <!-- tool-key: keyboard:tools.select.perspectiveCrop --> | Keyboard tool assignment | [tools.select.perspectiveCrop](../commands/tools.md#tools) |
 | Slice Tool shortcut <!-- tool-key: keyboard:tools.select.slice --> | Keyboard tool assignment | [tools.select.slice](../commands/tools.md#tools) |
 | Slice Select Tool shortcut <!-- tool-key: keyboard:tools.select.sliceSelect --> | Keyboard tool assignment | [tools.select.sliceSelect](../commands/tools.md#tools) |

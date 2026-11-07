@@ -107,9 +107,9 @@ Navigation: [All tools categories](index.md#categories)
 | Layer from Background… <!-- tool-key: menu:Layer/New/Layer from Background… --> | Layer/New | [layer.new.layerFromBackground](../commands/layer.md#layer) |
 | Layer via Copy <!-- tool-key: menu:Layer/New/Layer via Copy --> | Layer/New | [layer.new.layerViaCopy](../commands/layer.md#layer) |
 | Layer via Cut <!-- tool-key: menu:Layer/New/Layer via Cut --> | Layer/New | [layer.new.layerViaCut](../commands/layer.md#layer) |
-| Create a new layer <!-- tool-key: panel:Layers/footer/new-layer --> | Layers panel footer | [layer.new.layer](../commands/layer/cmd-layer.new.layer.md#layernewlayer) |
+| Create a new layer <!-- tool-key: panel:Layers/footer/new-layer --> | Layers panel footer; click creates, Option-click opens dialog, Cmd/Ctrl-click places below | [layer.new.layer](../commands/layer/cmd-layer.new.layer.md#layernewlayer) |
 | New Layer dialog OK <!-- tool-key: dialog:New Layer/OK --> | New Layer dialog | [layer.new.layer](../commands/layer/cmd-layer.new.layer.md#layernewlayer) |
-| Layer… <!-- tool-key: menu:Layer/New/Layer… --> | Layer/New | [layer.new.layer](../commands/layer/cmd-layer.new.layer.md#layernewlayer) |
+| Layer… <!-- tool-key: menu:Layer/New/Layer… --> | Layer/New; opens New Layer dialog | [layer.new.layer](../commands/layer/cmd-layer.new.layer.md#layernewlayer) |
 | Quick Export as PNG <!-- tool-key: menu:Layer/Quick Export as PNG --> | Layer | [layer.quickExportAsPng](../commands/layer.md#layer) |
 | All Layers <!-- tool-key: menu:Layer/Rasterize/All Layers --> | Layer/Rasterize | [layer.rasterize.allLayers](../commands/layer.md#layer) |
 | Fill Content <!-- tool-key: menu:Layer/Rasterize/Fill Content --> | Layer/Rasterize | [layer.rasterize.fillContent](../commands/layer.md#layer) |

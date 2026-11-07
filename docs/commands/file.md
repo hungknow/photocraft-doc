@@ -38,7 +38,7 @@ Navigation: [All command categories](index.md#categories)
 | file.import.videoFramesToLayers | Video Frames to Layers… | [Video Frames to Layers…](../tools/file-document.md#file-document) |
 | file.import.wiaSupport | WIA Support… | [WIA Support…](../tools/file-document.md#file-document) |
 | file.new | New… | [New…](../tools/file-document.md#file-document) |
-| file.open | Open… | [Open…](../tools/file-document.md#file-document) |
+| [file.open](file/cmd-file.open.md#fileopen) | Open one or more files as documents. | [Open…](../tools/file-document.md#file-document) |
 | file.openAs | Open As… | [Open As…](../tools/file-document.md#file-document) |
 | file.openExrParts | Open EXR Parts… | [Open EXR Parts…](../tools/file-document.md#file-document) |
 | file.package | Package… | [Package…](../tools/file-document.md#file-document) |

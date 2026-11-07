@@ -41,7 +41,7 @@ Navigation: [All tools categories](index.md#categories)
 | New… <!-- tool-key: menu:File/New… --> | File | [file.new](../commands/file.md#file) |
 | Open As… <!-- tool-key: menu:File/Open As… --> | File | [file.openAs](../commands/file.md#file) |
 | Open EXR Parts… <!-- tool-key: menu:File/Open EXR Parts… --> | File | [file.openExrParts](../commands/file.md#file) |
-| Open… <!-- tool-key: menu:File/Open… --> | File | [file.open](../commands/file.md#file) |
+| Open… <!-- tool-key: menu:File/Open… --> | File | [file.open](../commands/file/cmd-file.open.md#fileopen) |
 | Package… <!-- tool-key: menu:File/Package… --> | File | [file.package](../commands/file.md#file) |
 | Place Embedded… <!-- tool-key: menu:File/Place Embedded… --> | File | [file.placeEmbedded](../commands/file.md#file) |
 | Place Linked… <!-- tool-key: menu:File/Place Linked… --> | File | [file.placeLinked](../commands/file.md#file) |

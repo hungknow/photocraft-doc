@@ -1,6 +1,6 @@
 # tools
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6`.
+Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (Rust source clean).
 
 Navigation: [All command categories](index.md#categories)
 
@@ -43,7 +43,7 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.magicWand | W | [W shortcut](../tools/selection.md#selection) |
 | tools.select.magneticLasso | L | [L shortcut](../tools/selection.md#selection) |
 | tools.select.mixerBrush | 🖌 | [🖌 shortcut](../tools/painting-retouching.md#painting-retouching) |
-| tools.select.move | ✥ | [✥ shortcut](../tools/transform-crop.md#transform-crop) |
+| [tools.select.move](tools/cmd-tools.select.move.md#toolsselectmove) | Selects the Move tool in the UI. | [Move Tool shortcut](../tools/transform-crop.md#transform-crop) |
 | tools.select.note | Note Tool | [Note Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.objectSelection | Object Selection Tool | [Object Selection Tool shortcut](../tools/selection.md#selection) |
 | tools.select.paintBucket | G | [G shortcut](../tools/painting-retouching.md#painting-retouching) |

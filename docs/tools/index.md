@@ -1,6 +1,6 @@
 # PhotoCraft tools and UI actions
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (two untracked documentation files; no dirty Rust source).
+Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (Rust source clean).
 
 ## Categories
 

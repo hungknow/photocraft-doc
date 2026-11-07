@@ -82,7 +82,7 @@ Navigation: [All command categories](index.md#categories)
 | layer.new.frameFromLayers | Frame from Layers | [Frame from Layers](../tools/layers-masks.md#layers-masks) |
 | layer.new.group | Group… | [Group…](../tools/layers-masks.md#layers-masks) |
 | layer.new.groupFromLayers | Group from Layers… | [Group from Layers…](../tools/layers-masks.md#layers-masks) |
-| [layer.new.layer](layer/cmd-layer.new.layer.md#layernewlayer) | Create and select a raster layer. | [Layer…](../tools/layers-masks.md#layers-masks), [Create a new layer](../tools/layers-masks.md#layers-masks), [New Layer dialog](../tools/layers-masks.md#layers-masks) |
+| [layer.new.layer](layer/cmd-layer.new.layer.md#layernewlayer) | Create and select a raster layer with optional blending, clipping and neutral fill. | [Layer… menu](../tools/layers-masks.md#layers-masks), [Layers footer button](../tools/layers-masks.md#layers-masks), [New Layer dialog OK](../tools/layers-masks.md#layers-masks) |
 | layer.new.layerFromBackground | Layer from Background… | [Layer from Background…](../tools/layers-masks.md#layers-masks) |
 | layer.new.layerViaCopy | Layer via Copy | [Layer via Copy](../tools/layers-masks.md#layers-masks) |
 | layer.new.layerViaCut | Layer via Cut | [Layer via Cut](../tools/layers-masks.md#layers-masks) |
