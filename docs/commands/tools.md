@@ -1,6 +1,6 @@
 # tools
 
-Reviewed: 2026-11-07 · Source: `e95cdee5bbef75b712b2d81a277d91412fd8d6ed` (tracked Rust source revision).
+Reviewed: 2026-11-07 · Source: `f68e227026701cf24e0e182530694240e2d3cfe4` (tracked Rust source revision).
 
 Navigation: [All command categories](index.md#categories)
 

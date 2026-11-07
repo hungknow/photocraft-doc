@@ -1,6 +1,6 @@
 # Painting retouching
 
-Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked docs).
+Reviewed: 2026-11-07 · Source: `f68e227026701cf24e0e182530694240e2d3cfe4` (tracked Rust source revision).
 
 Navigation: [All tools categories](index.md#categories)
 

@@ -2,7 +2,7 @@
 
 Selects the Move tool in the PhotoCraft UI.
 
-Verified against: `3d60ad01f941519307c755eed8e0896d6274cde6` · 2026-11-07
+Verified against: `3d60ad01f941519307c755eed8e0896d6274cde6`; call route rechecked at `f68e227026701cf24e0e182530694240e2d3cfe4` · 2026-11-07
 Navigation: [tools commands](../tools.md#tools) · [Transform/crop actions](../../tools/transform-crop.md#transform-crop)
 
 ## Context to use
@@ -125,6 +125,31 @@ struct Transfer {
 ## Core logic flow
 
 Selection changes only UI state. Direct toolbar and default-key choices reach the same `Tool::Move` state without dispatching `tools.select.move`; explicit ID and custom-shortcut routes do dispatch it. Later pointer and arrow-key gestures use that state but dispatch other commands.
+
+### Read the execution route before the individual gestures
+
+The Rust source is split by event type and responsibility. Read a normal whole-layer drag in this order; the canvas calls `display::display_doc` during rendering, between pointer events, rather than from the pointer handler. A selected-pixel drag takes the `select.float` branch at pointer down and the `finish_selection_drag` branch at release instead.
+
+1. **Select the tool.** `menus::invoke` resolves the ID and `tool_memory::select` stores `Tool::Move`. A toolbar click or default `V` key reaches the same tool state directly. This step does not edit a document.
+2. **Pointer down.** `canvas.rs` converts the screen point to document coordinates and sends `ToolEvent::Down` to `tool_event`. Its preflight and filters can give the event to a guide, transform handle, layer marquee, or another overlay. `handle_move_pointer` then handles Move-specific picking and selected pixels; otherwise `tool_event` creates a `Drag` for a whole-layer move.
+3. **Pointer move and render.** `tool_event` updates the drag's latest point. On a render pass, `display::display_doc` asks `move_ui::display_doc` for a temporary translated document. `Some((document, key))` means the canvas can show that preview; `None` leaves the committed document visible. Neither return value commits an edit.
+4. **Pointer up.** `tool_event` takes the drag and calls `finish_release`. For a whole-layer Move drag it calls `move_ui::finish`, which dispatches `layer.translate` once with the rounded offset. The engine changes the document and records the history step; a click at its starting point returns before that command.
+
+Source route: [canvas event emission](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas.rs#L1030-L1050), [tool event gate](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/tool_input.rs#L350-L385), [Move press](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/tool_input.rs#L215-L335), [Move release](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/tool_input.rs#L550-L605), [render choice](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/display.rs#L145-L153), [preview and commit](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/move_ui.rs#L205-L255), [release dispatch](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/gesture.rs#L160-L167).
+
+The method names below have these specific roles:
+
+| Method | What it means here |
+|---|---|
+| `tool_memory::select` | Save the persistent tool choice in UI state; it does not start a drag. |
+| `tool_event` | Route one down, move, or up event through interceptors and the active tool. |
+| `move_ui::moves_selected_pixels_with` | Return `bool`: whether this Move gesture should lift the selected pixels instead of moving whole layers. |
+| `move_ui::float_selected_for_drag` | Return `bool`: start a floating pixel piece through `select.float`, or report the command error and return `false`. |
+| `move_ui::display_doc` | Return `Option<(Arc<Document>, u64)>`: a temporary document and render key for the current offset. `None` also covers outline-only preview. |
+| `finish_selection_drag` | Dispatch the selected-pixel move or drop on release. |
+| `move_ui::finish` | Dispatch `layer.translate` for a nonzero whole-layer offset; its `()` return is not a success signal. |
+
+The remaining subsections are alternative entry paths and gesture branches. Each starts at its own trigger; they are not one sequence to execute from top to bottom.
 
 ### Invoke `tools.select.move` to select Move
 
@@ -317,7 +342,7 @@ on_release_if_released_where_pressed: {
 
 ### Drag selected pixels as a floating piece
 
-Original source: [eligibility](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/move_ui.rs#L19-L33), [float start](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/move_ui.rs#L35-L51), [Move press](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/tool_input.rs#L276-L285), [modifier filtering](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/tools/move_mods.rs#L144-L159), [floating preview](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/move_ui.rs#L285-L325), [release](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/selection.rs#L87-L105), [engine float and drop](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/engine/src/cmd/float_cmds.rs#L289-L333), [automatic drop](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/engine/src/cmd/float_cmds.rs#L336-L367).
+Original source: [eligibility](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/move_ui.rs#L19-L33), [drag float start](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/move_ui.rs#L35-L70), [Move press](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/tool_input.rs#L275-L305), [modifier filtering](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/tools/move_mods.rs#L144-L159), [floating preview](https://github.com/storytold/photocraft/blob/f68e227026701cf24e0e182530694240e2d3cfe4/crates/ui-egui/src/canvas/move_ui.rs#L290-L325), [release](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/ui-egui/src/canvas/selection.rs#L87-L105), [engine float and drop](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/engine/src/cmd/float_cmds.rs#L289-L333), [automatic drop](https://github.com/storytold/photocraft/blob/3d60ad01f941519307c755eed8e0896d6274cde6/crates/engine/src/cmd/float_cmds.rs#L336-L367).
 
 **Adapted Rust pseudocode** — press, preview, release, and drop timing are condensed.
 
@@ -327,17 +352,18 @@ let pixels_eligible = active_document_has_selection
     && active_layer.visible
     && session.is_enabled("select.float"); // type/shape/group/locked cases are rejected by select.float.
 if pixels_eligible {
-    if !move_ui::float_selected(app, alt_at_press, 0.0, 0.0) { return; }
-    // bool; false already reported select.float/select.drop in the status bar.
+    if !move_ui::float_selected_for_drag(app, alt_at_press) { return; }
+    // bool; false means select.float or select.drop failed and the status bar has the error.
     drag.sel_move = Some(true);
 }
 on_move: {
     let delta = if shift { constrain_45_degrees(pointer - start, previous) } else { pointer - start };
-    // floating_doc asks float_cmds::displayed for the piece at the pending offset; this is the preview.
+    // The canvas render calls floating_doc, which asks float_cmds::displayed for a temporary
+    // document containing the piece at the pending offset. Moving the pointer alone is not a preview.
 }
 on_release: {
     if unmoved && floating.offset == (0,0) { run("select.drop", {}); return; } // No edit for an unmoved piece.
-    if moved { run("select.float", {"dx":rounded_dx,"dy":rounded_dy}); }       // Further calls move one piece.
+    if moved { run("select.float", {"dx":rounded_dx,"dy":rounded_dy}); }       // Result<Value,String>; moves the same floating piece or reports an error.
 }
 later_command: {
     if id == "select.float" || id == "select.drop" || non_document_prefix(id) { keep_floating(); }
@@ -361,8 +387,12 @@ on_move: {
     if alt_at_press && !duplicated_yet && screen_distance(delta) >= threshold {
         dup_from = duplicate_layers_in_place(app); // Option<usize>; Some(4) after layer.duplicate.
     }
-    // display_doc computes whole-pixel drag_offset and moved_target(...) for a translated document.
-    // A bounding-box-only preference, too_big, or moved_target error leaves outline/readout only.
+    // tool_event records the pointer in Drag; it does not construct the image preview here.
+}
+on_canvas_render: {
+    // display::display_doc calls move_ui::display_doc. That computes drag_offset and calls
+    // moved_target(...) to build the temporary translated document; Option<(Arc<Document>,u64)>.
+    // None for bounding-box-only preference, an oversized move, or a preview error: show outline/readout.
 }
 on_release: {
     let (dx, dy) = drag_offset.clamp(-1e7, 1e7);   // The same whole-pixel offset the readout showed.
