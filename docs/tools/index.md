@@ -1,6 +1,6 @@
 # PhotoCraft tools and UI actions
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (Rust source clean).
+Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked docs).
 
 ## Categories
 
@@ -11,7 +11,7 @@ Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (Rust
 | [File/document](file-document.md#file-document) | 52 |
 | [Filters](filters.md#filters) | 76 |
 | [Layers/masks](layers-masks.md#layers-masks) | 186 |
-| [Painting/retouching](painting-retouching.md#painting-retouching) | 66 |
+| [Painting/retouching](painting-retouching.md#painting-retouching) | 87 |
 | [Selection](selection.md#selection) | 50 |
 | [Transform/crop](transform-crop.md#transform-crop) | 14 |
 | [Type](type.md#type) | 82 |

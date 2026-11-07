@@ -1,6 +1,6 @@
 # layer
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6`.
+Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked docs).
 
 Navigation: [All command categories](index.md#categories)
 
@@ -108,12 +108,12 @@ Navigation: [All command categories](index.md#categories)
 | layer.newLayerBasedSlice | New Layer Based Slice | [New Layer Based Slice](../tools/layers-masks.md#layers-masks) |
 | layer.quickExportAsPng | Quick Export as PNG | [Quick Export as PNG](../tools/layers-masks.md#layers-masks) |
 | layer.rasterize.allLayers | All Layers | [All Layers](../tools/layers-masks.md#layers-masks) |
-| layer.rasterize.fillContent | Fill Content | [Fill Content](../tools/layers-masks.md#layers-masks) |
+| layer.rasterize.fillContent | Fill Content | [Fill Content](../tools/layers-masks.md#layers-masks); [Brush rasterization confirmation](../tools/painting-retouching.md#painting-retouching) |
 | layer.rasterize.layer | Layer | [Layer](../tools/layers-masks.md#layers-masks) |
 | layer.rasterize.layerStyle | Layer Style | [Layer Style](../tools/layers-masks.md#layers-masks) |
-| layer.rasterize.shape | Shape | [Shape](../tools/layers-masks.md#layers-masks) |
-| layer.rasterize.smartObject | Smart Object | [Smart Object](../tools/layers-masks.md#layers-masks) |
-| layer.rasterize.type | Type | [Type](../tools/layers-masks.md#layers-masks) |
+| layer.rasterize.shape | Shape | [Shape](../tools/layers-masks.md#layers-masks); [Brush rasterization confirmation](../tools/painting-retouching.md#painting-retouching) |
+| layer.rasterize.smartObject | Smart Object | [Smart Object](../tools/layers-masks.md#layers-masks); [Brush rasterization confirmation](../tools/painting-retouching.md#painting-retouching) |
+| layer.rasterize.type | Type | [Type](../tools/layers-masks.md#layers-masks); [Brush rasterization confirmation](../tools/painting-retouching.md#painting-retouching) |
 | layer.rasterize.vectorMask | Vector Mask | [Vector Mask](../tools/layers-masks.md#layers-masks) |
 | layer.rasterize.video | Video | [Video](../tools/layers-masks.md#layers-masks) |
 | layer.renameLayer | Rename Layer | [Rename Layer](../tools/layers-masks.md#layers-masks) |

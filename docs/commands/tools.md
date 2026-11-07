@@ -1,6 +1,6 @@
 # tools
 
-Reviewed: 2026-11-06 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (Rust source clean).
+Reviewed: 2026-11-07 · Source: `3d60ad01f941519307c755eed8e0896d6274cde6` (tracked Rust unchanged; unrelated untracked docs).
 
 Navigation: [All command categories](index.md#categories)
 
@@ -12,7 +12,7 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.artboard | Artboard Tool | [Artboard Tool shortcut](../tools/transform-crop.md#transform-crop) |
 | tools.select.backgroundEraser | Background Eraser Tool | [Background Eraser Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.blur | Blur Tool | [Blur Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
-| tools.select.brush | 🖌 | [🖌 shortcut](../tools/painting-retouching.md#painting-retouching) |
+| [tools.select.brush](tools/cmd-tools.select.brush.md#toolsselectbrush) | Select Brush for later paint strokes. | [Brush shortcut](../tools/painting-retouching.md#painting-retouching); [toolbar and palette choose the same tool directly](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.burn | Burn Tool | [Burn Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.cloneStamp | Clone Stamp Tool | [Clone Stamp Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
 | tools.select.colorReplacement | Color Replacement Tool | [Color Replacement Tool shortcut](../tools/painting-retouching.md#painting-retouching) |
@@ -76,3 +76,14 @@ Navigation: [All command categories](index.md#categories)
 | tools.select.verticalTypeMask | T | [T shortcut](../tools/type.md#type) |
 | tools.select.zoom | 🔍 | [🔍 shortcut](../tools/view-workspace.md#view-workspace) |
 | tools.swapColors | Switch Foreground and Background Colors | [Switch Foreground and Background Colors](../tools/painting-retouching.md#painting-retouching) |
+| tools.setBrush | Set the session brush or choose a preset. | [Brush resize HUD](../tools/painting-retouching.md#painting-retouching); [preset picker](../tools/painting-retouching.md#painting-retouching); [mode choice](../tools/painting-retouching.md#painting-retouching); [numeric keys](../tools/painting-retouching.md#painting-retouching); [options controls](../tools/painting-retouching.md#painting-retouching) |
+| tools.setColors | Set foreground and background colors. | [Brush Alt sampling](../tools/painting-retouching.md#painting-retouching); [Brush color HUD](../tools/painting-retouching.md#painting-retouching) |
+| tools.decreaseBrushSize | Reduce brush diameter. | [Decrease Brush Size](../tools/painting-retouching.md#painting-retouching) |
+| tools.increaseBrushSize | Increase brush diameter. | [Increase Brush Size](../tools/painting-retouching.md#painting-retouching) |
+| tools.decreaseBrushHardness | Reduce brush hardness. | [Decrease Brush Hardness](../tools/painting-retouching.md#painting-retouching) |
+| tools.increaseBrushHardness | Increase brush hardness. | [Increase Brush Hardness](../tools/painting-retouching.md#painting-retouching) |
+| tools.previousBrush | Choose the previous brush preset. | [Previous Brush](../tools/painting-retouching.md#painting-retouching) |
+| tools.nextBrush | Choose the next brush preset. | [Next Brush](../tools/painting-retouching.md#painting-retouching) |
+| tools.firstBrush | Choose the first brush preset. | [First Brush](../tools/painting-retouching.md#painting-retouching) |
+| tools.lastBrush | Choose the last brush preset. | [Last Brush](../tools/painting-retouching.md#painting-retouching) |
+| tools.rotateBrush | Rotate the brush tip. | [Rotate Brush Tip](../tools/painting-retouching.md#painting-retouching) |
